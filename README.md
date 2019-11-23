@@ -1,9 +1,6 @@
-# Code for the Recurrent Neural Network in the presentation "Tensorflow and deep learning - without a PhD, Part 2"
+# Code for the Recurrent Neural Network as a character level, for multiple timesteps prediction
 
-The presentation itself is available here:
 
-* [Video](https://t.co/cIePWmdxVE)
-* [Slides](https://goo.gl/jrd7AR)
 
 This sample has now been updated for Tensorflow 1.1. Please make sure you redownload the checkpoint files if you use rnn_play.py.
 
@@ -12,7 +9,7 @@ This sample has now been updated for Tensorflow 1.1. Please make sure you redown
 ```
 > python3 rnn_train.py
 ```
-The script **rnn_train.py** trains a language model on the complete works of William Shakespeare.
+The script **rnn_train.py** trains a language model on the complete works of  davinci.
 You can also train on Tensorflow Python code. See comments in the file.
 
 The file **rnn_train_stateistuple.py** implements the same model using 
@@ -25,22 +22,21 @@ a tuple is a bit more cumbersome.
 ```
 The training script **rnn_train.py** is set up to save training and validation
 data as "Tensorboard summaries" in the "log" folder. They can be visualised with Tensorboard.
-In the screenshot below, you can see the RNN being trained on 6 epochs of Shakespeare.
+In the screenshot below, you can see the RNN being trained on 6 epochs of davinci.
 The training and validation curves stay close together which means that overfitting is not a major issue here.
  You can try to add some dropout (pkeep=0.8 for example) but it will not improve the situation much becasue it is already quite good.
  
-![Image](https://martin-gorner.github.io/tensorflow-rnn-shakespeare/tensorboard_screenshot.png)
 ```
 > python3 rnn_play.py
 ``` 
    
-The script **rnn_play.py** uses a trained checkpoint to generate a new "Shakespeare" play.  
+The script **rnn_play.py** uses a trained checkpoint to generate a new "davinci" play.  
 You can also generate new "Tensorflow Python" code. See comments in the file.
 
 Checkpoint files can be downloaded from here:  
    
 [Fully trained](https://drive.google.com/file/d/0B5njS_LX6IsDc2lWTmtyanRpOHc/view?usp=sharing)
-on Shakespeare or Tensorflow Python source.   
+on davinci or Tensorflow Python source.   
    
 [Partially trained](https://drive.google.com/file/d/0B5njS_LX6IsDUlFsMkdhclNSazA/view?usp=sharing)
 to see how they make progress in training.
@@ -114,7 +110,7 @@ The second article says that dropout should be applied to RNN inputs+output as w
 using the same dropout mask for all the steps of the unrolled sequence. This approach is called "variational dropout"
 and the primitives for implementing it have recently been added to Tensorflow.
 
-In the Shakespeare example, dropout (pkeep=0.8) can fix a slight tendency for overfitting visible between 10 and 20 training epochs.
+In the davinci example, dropout (pkeep=0.8) can fix a slight tendency for overfitting visible between 10 and 20 training epochs.
 
 ### 7) Any other gotcha's ?
 When saving and restoring the model, you must name your placeholders and name
@@ -138,7 +134,7 @@ RNN blocks do not.
 
 Good mathematical hunting!﻿
 
-### 8) Show us some generated Shakespeare
+### 8) Show us some generated davinci
 ```
          TITUS ANDRONICUS
 

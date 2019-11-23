@@ -1,18 +1,3 @@
-# encoding: UTF-8
-# Copyright 2017 Google.com
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import tensorflow as tf
 from tensorflow.contrib import layers
 from tensorflow.contrib import rnn  # rnn stuff temporarily in contrib, moving back to code in TF 1.1
@@ -35,7 +20,7 @@ tf.set_random_seed(0)
 #         You can now play with the parameters anf follow the effects in Tensorboard
 #         A good choice of parameters ensures that the testing and validation curves stay close
 #         To see the curves drift apart ("overfitting") try to use an insufficient amount of
-#         training data (shakedir = "shakespeare/t*.txt" for example)
+#         training data (shakedir = "davinci/t*.txt" for example)
 #
 SEQLEN = 30
 BATCHSIZE = 200
@@ -45,8 +30,8 @@ NLAYERS = 3
 learning_rate = 0.001  # fixed learning rate
 dropout_pkeep = 0.8    # some dropout
 
-# load data, either shakespeare, or the Python source of Tensorflow itself
-shakedir = "shakespeare/*.txt"
+# load data, either davinci, or the Python source of Tensorflow itself
+shakedir = "davinci/*.txt"
 #shakedir = "../tensorflow/**/*.py"
 codetext, valitext, bookranges = txt.read_data_files(shakedir, validation=True)
 
@@ -188,26 +173,3 @@ for x, y_, epoch in txt.rnn_minibatch_sequencer(codetext, BATCHSIZE, SEQLEN, nb_
     # loop state around
     istate = ostate
     step += BATCHSIZE * SEQLEN
-
-# all runs: SEQLEN = 30, BATCHSIZE = 100, ALPHASIZE = 98, INTERNALSIZE = 512, NLAYERS = 3
-# run 1477669632 decaying learning rate 0.001-0.0001-1e7 dropout 0.5: not good
-# run 1477670023 lr=0.001 no dropout: very good
-
-# Tensorflow runs:
-# 1485434262
-#   trained on shakespeare/t*.txt only. Validation on 1K sequences
-#   validation loss goes up from step 5M (overfitting because of small dataset)
-# 1485436038
-#   trained on shakespeare/t*.txt only. Validation on 5K sequences
-#   On 5K sequences validation accuracy is slightly higher and loss slightly lower
-#   => sequence breaks do introduce inaccuracies but the effect is small
-# 1485437956
-#   Trained on shakespeare/*.txt. Validation on 1K sequences
-#   On this much larger dataset, validation loss still decreasing after 6 epochs (step 35M)
-# 1495447371
-#   Trained on shakespeare/*.txt no dropout, 30 epochs
-#   Validation loss starts going up after 10 epochs (overfitting)
-# 1495440473
-#   Trained on shakespeare/*.txt "naive dropout" pkeep=0.8, 30 epochs
-#   Dropout brings the validation loss under control, preventing it from
-#   going up but the effect is small.

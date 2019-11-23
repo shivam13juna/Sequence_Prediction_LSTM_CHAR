@@ -1,18 +1,3 @@
-# encoding: UTF-8
-# Copyright 2017 Google.com
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 import tensorflow as tf
 from tensorflow.contrib import layers
 from tensorflow.contrib import rnn  # rnn stuff temporarily in contrib, moving back to code in TF 1.1
@@ -36,8 +21,8 @@ INTERNALSIZE = 512
 NLAYERS = 3
 learning_rate = 0.001  # fixed learning rate
 
-# load data, either shakespeare, or the Python source of Tensorflow itself
-shakedir = "shakespeare/*.txt"
+# load data, either davinci, or the Python source of Tensorflow itself
+shakedir = "davinci/*.txt"
 # shakedir = "../tensorflow/**/*.py"
 codetext, valitext, bookranges = txt.read_data_files(shakedir, validation=False)
 
