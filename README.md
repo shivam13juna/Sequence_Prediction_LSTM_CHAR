@@ -2,7 +2,7 @@
 
 
 
-This sample has now been updated for Tensorflow 1.1. Please make sure you redownload the checkpoint files if you use rnn_play.py.
+This sample has now been updated for Tensorflow 1.15. Please make sure you redownload the checkpoint files if you use rnn_play.py.
 
 ## Usage:
 
