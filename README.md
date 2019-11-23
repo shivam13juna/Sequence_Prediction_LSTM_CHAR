@@ -33,13 +33,6 @@ The training and validation curves stay close together which means that overfitt
 The script **rnn_play.py** uses a trained checkpoint to generate a new "davinci" play.  
 You can also generate new "Tensorflow Python" code. See comments in the file.
 
-Checkpoint files can be downloaded from here:  
-   
-[Fully trained](https://drive.google.com/file/d/0B5njS_LX6IsDc2lWTmtyanRpOHc/view?usp=sharing)
-on davinci or Tensorflow Python source.   
-   
-[Partially trained](https://drive.google.com/file/d/0B5njS_LX6IsDUlFsMkdhclNSazA/view?usp=sharing)
-to see how they make progress in training.
 
 ```
 > python3 -m unittest tests.py
